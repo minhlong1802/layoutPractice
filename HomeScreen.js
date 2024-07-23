@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Image, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Swiper from 'react-native-swiper'; // Updated import
 
-// Importing icons
+// Importing icons and images
 import SearchIcon from './SearchIcon.png';
 import IconLeft from './IconLeft.png';
 import Longdz from './Longdz.jpg';
@@ -12,15 +13,24 @@ import PizzaIcon from './PizzaIcon.png';
 import BurgerIcon from './BurgerIcon.png';
 import DrinkIcon from './DrinkIcon.png';
 import RiceIcon from './RiceIcon.png';
+import BurgerImage from './BurgerImage.png';
+import PizzaImage from './PizzaImage.png';
+import SlideImage from './SlideImage.png'; 
 
 export default function HomeScreen() {
   const [selectedButton, setSelectedButton] = useState('Pizza');
 
   const buttons = [
-    { name: 'Pizza', icon: PizzaIcon },
-    { name: 'Burger', icon: BurgerIcon },
-    { name: 'Drink', icon: DrinkIcon },
-    { name: 'Rice', icon: RiceIcon },
+    { name: 'Pizza', icon: PizzaIcon, iconSizeH: 45, iconSizeW: 30 },
+    { name: 'Burger', icon: BurgerIcon, iconSizeH: 40, iconSizeW: 35 },
+    { name: 'Drink', icon: DrinkIcon, iconSizeH: 40, iconSizeW: 35 },
+    { name: 'Rice', icon: RiceIcon, iconSizeH: 45, iconSizeW: 20 },
+  ];
+
+  const carouselItems = [
+    { image: SlideImage },
+    { image: SlideImage },
+    { image: SlideImage },
   ];
 
   return (
@@ -62,10 +72,44 @@ export default function HomeScreen() {
             ]}
             onPress={() => setSelectedButton(button.name)}
           >
-            <Image source={button.icon} style={styles.buttonIcon} />
+            <Image source={button.icon} style={[styles.buttonIcon, { width: button.iconSizeW, height: button.iconSizeH }]} />
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <View style={styles.carouselContainer}>
+        <Swiper
+          style={styles.wrapper}
+          showsButtons={false}
+          autoplay
+          autoplayTimeout={3} // Time between slides
+        >
+          {carouselItems.map((item, index) => (
+            <View key={index} style={styles.carouselItem}>
+              <Image source={item.image} style={styles.carouselImage} />
+            </View>
+          ))}
+        </Swiper>
+      </View>
+      <View style={styles.popularItemsContainer}>
+        <View style={styles.popularItemsHeader}>
+          <Text style={{ fontWeight: 'bold', marginLeft: 10 }}>Popular items</Text>
+          <Text>View all</Text>
+        </View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.featuredItemsContainer}
+        >
+          <View style={styles.featuredItem}>
+            <Image source={BurgerImage} style={styles.featuredImage} />
+            <Text style={styles.featuredText}>BURGER</Text>
+          </View>
+          <View style={styles.featuredItem}>
+            <Image source={PizzaImage} style={styles.featuredImage} />
+            <Text style={styles.featuredText}>PIZZA</Text>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 }
@@ -154,9 +198,11 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   scrollView: {
+    position: 'absolute',
+    top: 185,
     marginTop: 20,
     paddingHorizontal: 10,
-    width: '100%',
+    width: '90%',
   },
   button: {
     backgroundColor: '#F5F5F5',
@@ -174,5 +220,58 @@ const styles = StyleSheet.create({
   buttonIcon: {
     width: 30,
     height: 50,
+  },
+  carouselContainer: {
+    width: '90%',
+    height: 150, // Adjust as needed
+    marginTop: 170, // Position it below the ScrollView
+    marginBottom: 10, // Ensure space before the popular items
+  },
+  wrapper: {
+    // Styling for swiper wrapper if needed
+  },
+  carouselItem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  carouselImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  popularItemsContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '95%',
+    paddingHorizontal: 10,
+  },
+  popularItemsHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  featuredItemsContainer: {
+    height: 180,  // Increased height to accommodate image and text
+  },
+  featuredItem: {
+    width: 200,
+    height: 200, // Increased height to accommodate image and text
+    justifyContent: 'center',  // Center the content vertically
+    alignItems: 'center',
+    borderRadius: 10,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  featuredImage: {
+    width: 180,
+    height: 120,  // Adjusted height for image
+    marginBottom: 10,  // Space between image and text
+  },
+  featuredText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
