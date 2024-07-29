@@ -24,6 +24,7 @@ export default function OrderScreen() {
         <Image source={require('./Assets/BinIcon.png')} style={styles.binIcon} />
       </View>
       <Image source={require('./Assets/HeaderImageOrderScreen.png')} style={styles.headerImageOrderScreen} />
+      
       <View style={styles.bottomContainer}>
         <Image source={require('./Assets/ThreeBurgerImage.png')} style={styles.ThreeBurgerImage} />
         <View style={styles.itemInfoContainer}>
@@ -41,12 +42,16 @@ export default function OrderScreen() {
             <Text style={styles.addressLabel}>Delivery Address</Text>
             <Text style={styles.addressText}>Dhaka, Bangladesh</Text>
           </View>
-          <Image source={require('./Assets/WriteIcon.png')} style={styles.WriteIcon} />
+          <TouchableOpacity>
+            <Image source={require('./Assets/WriteIcon.png')} style={styles.WriteIcon} />
+          </TouchableOpacity>
         </View>
         <View style={styles.paymentContainer}>
           <Image source={require('./Assets/CreditCardIcon.png')} style={styles.CreditCardIcon} />
           <Text style={styles.paymentText}>Payment Method</Text>
-          <Text style={styles.changeText}>Change</Text>
+          <TouchableOpacity>
+            <Text style={styles.changeText}>Change</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.summaryContainer}>
           <Text style={styles.summaryTitle}>Checkout Summary</Text>
@@ -60,7 +65,7 @@ export default function OrderScreen() {
           </View>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Payable Total</Text>
-            <Text style={[styles.summaryValue, { color: '#7D78F1' }]}>$62.2</Text>
+            <Text style={styles.summaryValue}>$62.20</Text>
           </View>
         </View>
         <TouchableOpacity style={styles.confirmButton}>
@@ -109,13 +114,13 @@ const styles = StyleSheet.create({
     top: 100,
   },
   bottomContainer: {
-    width: '90%',
+    width: '86%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     position: 'absolute',
     bottom: 0,
-    height: 420,
+    height: 390,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
@@ -129,45 +134,40 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    marginBottom: 10,
   },
   itemTitle: {
-    fontSize: 34,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   itemPrice: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#7D78F1',
   },
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     width: '100%',
-    marginVertical: 10,
+    marginBottom: 10,
   },
   StarIcon: {
-    width: 25,
-    height: 25,
+    width: 20,
+    height: 20,
+    marginRight: 5,
   },
   ratingText: {
     fontSize: 14,
   },
-  quantityContainer: {
-    flexDirection: 'row',
-  },
   PlusMinusIcon: {
-    width: 80,
-    height: 23,
+    width: 20,
+    height: 20,
+    marginLeft: 'auto',
   },
   deliveryContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: '#E6E6E6',
-    borderRadius: 10,
-    padding: 10,
-    marginVertical: 10,
+    marginBottom: 10,
   },
   LocationIcon: {
     width: 20,
@@ -192,24 +192,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    marginVertical: 10,
+    marginBottom: 10,
   },
   CreditCardIcon: {
-    width: 35,
+    width: 20,
     height: 20,
     marginRight: 10,
   },
   paymentText: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   changeText: {
-    color: '#7D78F1',
+    color: 'blue',
   },
   summaryContainer: {
     width: '100%',
-    marginVertical: 10,
+    marginBottom: 20,
   },
   summaryTitle: {
     fontSize: 16,
@@ -229,16 +229,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   confirmButton: {
-    backgroundColor: '#007BFF',
-    borderRadius: 30,
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    marginTop: 20,
-    width: '90%',
-    alignItems: 'center',
+    backgroundColor: 'blue',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
   },
   confirmButtonText: {
-    color: '#FFFFFF',
+    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
