@@ -4,18 +4,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Swiper from 'react-native-swiper'; // Updated import
 
 // Importing icons and images
-import SearchIcon from './SearchIcon.png';
-import IconLeft from './IconLeft.png';
-import Longdz from './Longdz.jpg';
-import LocationIcon from './LocationIcon.png';
-import BellIcon from './BellIcon.png';
-import PizzaIcon from './PizzaIcon.png';
-import BurgerIcon from './BurgerIcon.png';
-import DrinkIcon from './DrinkIcon.png';
-import RiceIcon from './RiceIcon.png';
-import BurgerImage from './BurgerImage.png';
-import PizzaImage from './PizzaImage.png';
-import SlideImage from './SlideImage.png'; 
+import SearchIcon from './Assets/SearchIcon.png';
+import IconLeft from './Assets/IconLeft.png';
+import Longdz from './Assets/Longdz.jpg';
+import LocationIcon from './Assets/LocationIcon.png';
+import BellIcon from './Assets/BellIcon.png';
+import PizzaIcon from './Assets/PizzaIcon.png';
+import BurgerIcon from './Assets/BurgerIcon.png';
+import DrinkIcon from './Assets/DrinkIcon.png';
+import RiceIcon from './Assets/RiceIcon.png';
+import BurgerImage from './Assets/BurgerImage.png';
+import PizzaImage from './Assets/PizzaImage.png';
+import SlideImage from './Assets/SlideImage.png'; 
 
 export default function HomeScreen() {
   const [selectedButton, setSelectedButton] = useState('Pizza');
