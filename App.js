@@ -11,21 +11,13 @@ import InboxIcon from './Assets/InboxIcon.png';
 import ProfileIcon from './Assets/ProfileIcon.png';
 import HomeScreen from './HomeScreen';
 import OrderScreen from './OrderScreen';
-
+import ProfileScreen from './ProfileScreen';
 const Tab = createBottomTabNavigator();
 
 function InboxScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Inbox Screen</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile Screen</Text>
     </View>
   );
 }
